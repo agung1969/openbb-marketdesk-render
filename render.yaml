@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: openbb-marketdesk-api
+    runtime: docker
+    plan: free
+    region: singapore
+    autoDeploy: false
+    dockerContext: .
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    envVars:
+      - key: CORS_ORIGINS
+        value: https://openbb-marketdesk-lab.stomper-bdg.chatgpt.site
+      - key: OPENBB_API_AUTH
+        value: "True"
+      - key: OPENBB_API_USERNAME
+        value: marketdesk
+      - key: OPENBB_API_PASSWORD
+        sync: false
+      - key: OPENBB_AUTO_BUILD
+        value: "False"
+      - key: OPENBB_DEBUG_MODE
+        value: "False"
+      - key: OPENBB_DEV_MODE
+        value: "False"
